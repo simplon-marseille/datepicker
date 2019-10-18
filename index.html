@@ -1,0 +1,71 @@
+<!-- https://formden.com/blog/date-picker -->
+<!-- https://bootstrap-datepicker.readthedocs.io/en/latest/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+</head>
+<body>
+    <div class="bootstrap-iso">
+        <div class="container-fluid">
+         <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+       
+           <!-- Form code begins -->
+           <form method="post">
+             <div class="form-group"> <!-- Date input -->
+               <label class="control-label" for="date">Date debut</label>
+               <input class="form-control" autocomplete="off" id="date-debut" name="date-debut" placeholder="DD/MM/YYY" type="text"/>
+             </div>
+             <label class="control-label" for="date">Date fin</label>
+               <input class="form-control" autocomplete="off" id="date-fin" name="date-fin" placeholder="DD/MM/YYY" type="text"/>
+             </div>
+             <div class="form-group"> <!-- Submit button -->
+               <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+             </div>
+            </form>
+            <!-- Form code ends --> 
+       
+           </div>
+         </div>    
+        </div>
+        <script>
+            $(document).ready(function(){
+              var dateDebut=$('input[name="date-debut"]'); //our date input has the name "date"
+              var optionsDateDebut={
+                format: 'dd/mm/yyyy',
+                todayHighlight: true,
+                autoclose: true,
+                startDate: new Date()
+              };
+              dateDebut.datepicker(optionsDateDebut);
+              
+              document.querySelector("#date-fin").addEventListener('focus', (event) => {
+                event.preventDefault()
+                const dateFin=$('input[name="date-fin"]');
+                const dateDeDebut = document.querySelector('#date-debut').value
+                var optionsDateFin={
+                format: 'dd/mm/yyyy',
+                todayHighlight: true,
+                autoclose: true,
+                orientation: "top",
+                startDate: dateDeDebut
+              };
+                dateFin.datepicker(optionsDateFin);
+              });
+            })
+        </script>
+</body>
+</html>
+
+
+
+
